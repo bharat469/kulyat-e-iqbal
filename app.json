@@ -4,11 +4,11 @@
     "slug": "kulyat-e-iqbal",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Untitled/icon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Untitled/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#021D30"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -20,13 +20,15 @@
       "supportsTablet": true
     },
     "android": {
+      "package": "com.kulyateiqbal.kulyat_e_iqbal",
+      "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/Untitled/adaptive.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/Untitled/icon.png"
     }
   }
 }

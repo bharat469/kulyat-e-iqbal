@@ -5,6 +5,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import Navbar from "../../component/header/Navbar";
+import { Entypo,FontAwesome } from '@expo/vector-icons'; 
 
 const Home = ({navigation}) => {
   return (
@@ -16,17 +17,18 @@ const Home = ({navigation}) => {
       home={()=>navigation.navigate('DrawerNavigator')}
       home={() => navigation.navigate("DrawerNavigator")}
       bookmark={()=>navigation.navigate('Favorite')}
+      leftIcon={ <Entypo name="menu" size={34} color="#fff" />}
       />
       <View style={styles.bookContainer}>
         <View style={styles.imageContainer}>
-          <TouchableOpacity style={styles.book}>
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:1,name:'Harees un alain'})} >
             <Image
               source={require("../../assets/book1.png")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.book}>
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:2,name:'Sana ka mosam'})}>
             <Image
               source={require("../../assets/book2.png")}
               style={styles.imageLeftStyle}
@@ -34,14 +36,14 @@ const Home = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.imageContainer}>
-          <TouchableOpacity style={styles.book}>
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:3,name:'Mahasin'})}>
             <Image
               source={require("../../assets/book3.png")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.book}>
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:4,name:'Tahayyat'})}>
             <Image
               source={require("../../assets/book4.png")}
               style={styles.imageLeftStyle}

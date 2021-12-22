@@ -15,6 +15,8 @@ import {
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import DrawerContent from "../drawerContent/drawerContent";
 import { Drawer } from 'react-native-paper';
+import List from "../../container/list/List";
+import Description from "../../container/description/description";
 
 
 const Stack = createNativeStackNavigator();
@@ -107,6 +109,16 @@ const Navigation = () => {
           name="DrawerNavigator"
           component={drawerNavigation}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+        name="List"
+        component={List}
+        options={{headerShown:false}}
+        />
+        <Stack.Screen
+        name="Description"
+        component={Description}
+        options={{headerShown:false}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -11,7 +11,7 @@ const Navbar = (props) => {
     <View style={styles.headers}>
    <View style={styles.navbar}>
      <TouchableOpacity style={styles.menu} onPress={props.menu}>
-     <Entypo name="menu" size={34} color="#fff" />
+    {props.leftIcon}
      </TouchableOpacity>
      <View style={styles.leftNavbar}>
        <Text style={styles.title}>{props.name}</Text>

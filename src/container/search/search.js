@@ -13,6 +13,7 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Searchbar } from "react-native-paper";
+import { Entypo,FontAwesome } from '@expo/vector-icons'; 
 
 const Search = ({ navigation }) => {
   return (
@@ -24,6 +25,7 @@ const Search = ({ navigation }) => {
         home={()=>navigation.navigate('Home')}
         home={() => navigation.navigate("DrawerNavigator")}
         bookmark={()=>navigation.navigate('Favorite')}
+        leftIcon={ <Entypo name="menu" size={34} color="#fff" />}
         />
 
         <View style={styles.searchContainer}>

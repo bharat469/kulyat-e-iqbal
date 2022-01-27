@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import {
   widthPercentageToDP as wp,
@@ -6,12 +6,23 @@ import {
 } from "react-native-responsive-screen";
 import Navbar from "../../component/header/Navbar";
 import { Entypo,FontAwesome } from '@expo/vector-icons'; 
+import Strings from '../../helpers/localisedString'
+import AsyncStorageLib from "@react-native-async-storage/async-storage";
 
-const Home = ({navigation}) => {
+const Home = ({navigation,route}) => {
+const langty = route.params
+
+useEffect(()=>{
+  return console.log('lang',langty)
+})
+
+
+
+console.log('')
   return (
     <View style={styles.homeContainer}>
       <Navbar 
-      name="Home" 
+      name={Strings.HOME}
       menu={()=>navigation.toggleDrawer()}
       search={()=>navigation.navigate('Search')}
       home={()=>navigation.navigate('DrawerNavigator')}
@@ -21,14 +32,14 @@ const Home = ({navigation}) => {
       />
       <View style={styles.bookContainer}>
         <View style={styles.imageContainer}>
-          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:1,name:'Harees un alain'})} >
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:1,name:'ثنا کا موسم'})} >
             <Image
               source={require("../../assets/book1.png")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:2,name:'Sana ka mosam'})}>
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:2,name:'حریصٌ علینا'})}>
             <Image
               source={require("../../assets/book2.png")}
               style={styles.imageLeftStyle}
@@ -36,14 +47,14 @@ const Home = ({navigation}) => {
           </TouchableOpacity>
         </View>
         <View style={styles.imageContainer}>
-          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:3,name:'Mahasin'})}>
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:3,name:'محاسن'})}>
             <Image
               source={require("../../assets/book3.png")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:4,name:'Tahayyat'})}>
+          <TouchableOpacity style={styles.book} onPress={()=>navigation.navigate('List',{id:4,name:'تحیت'})}>
             <Image
               source={require("../../assets/book4.png")}
               style={styles.imageLeftStyle}

@@ -7,7 +7,7 @@
     "icon": "./assets/Untitled/icon.png",
     "splash": {
       "image": "./assets/Untitled/splash.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#021D30"
     },
     "updates": {
@@ -17,7 +17,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.kulyatEiqbal.KulyatEiqbal"
     },
     "android": {
       "package": "com.kulyateiqbal.kulyat_e_iqbal",

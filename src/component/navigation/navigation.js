@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Platform, StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -17,6 +17,9 @@ import DrawerContent from "../drawerContent/drawerContent";
 import { Drawer } from 'react-native-paper';
 import List from "../../container/list/List";
 import Description from "../../container/description/description";
+import Strings from "../../helpers/localisedString";
+import AsyncStorageLib from "@react-native-async-storage/async-storage";
+
 
 
 const Stack = createNativeStackNavigator();
@@ -39,6 +42,7 @@ const tabNavigation = () => {
       screenOptions={{
         tabBarStyle: { backgroundColor: primary, height:Platform.OS==='ios'?hp('13%') :hp("7.5%") },
         tabBarActiveTintColor: "#fff",
+        tabBarShowLabel:false,
         tabBarInactiveTintColor: "#A5A5A5",
         tabBarLabelStyle: {
           fontSize: hp("2%"),
@@ -55,7 +59,7 @@ const tabNavigation = () => {
             return (
               <Entypo
                 name="home"
-                size={34}
+                size={44}
                 color="#fff"
                 style={[styles.icon, { color: focused ? "#fff" : "#A5A5A5" }]}
               />
@@ -72,7 +76,7 @@ const tabNavigation = () => {
             return (
               <FontAwesome
                 name="search"
-                size={34}
+                size={44}
                 color="#fff"
                 style={[styles.icon, { color: focused ? "#fff" : "#A5A5A5" }]}
               />
@@ -89,7 +93,7 @@ const tabNavigation = () => {
             return (
               <MaterialIcons
                 name="favorite"
-                size={34}
+                size={44}
                 color="#fff"
                 style={[styles.icon, {color:focused?'#fff':'#A5A5A5'}]}
               />
@@ -102,6 +106,24 @@ const tabNavigation = () => {
 };
 
 const Navigation = () => {
+
+  useEffect(()=>{
+    changeLanguage()
+  },[])
+
+const changeLanguage= async()=>{
+  let langType = null;
+  langType = await AsyncStorageLib.getItem('lang')
+  if(langType==null){
+    await AsyncStorageLib.setItem('lang','urdu')
+    Strings.setLanguage('urdu');
+   }
+   else{
+     Strings.setLanguage(langType)
+   }
+}
+
+
   return (
     <NavigationContainer>
       <Stack.Navigator>

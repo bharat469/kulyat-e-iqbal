@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Navbar from "../../component/header/Navbar";
 import {
@@ -6,26 +6,97 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Ionicons } from "@expo/vector-icons";
-import { ScrollView } from "react-native-gesture-handler";
+import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import Strings from "../../helpers/localisedString";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import ReactNativeZoomableView from "@dudigital/react-native-zoomable-view/src/ReactNativeZoomableView";
+
+import { FontAwesome } from "@expo/vector-icons";
 
 const Description = ({ navigation, route }) => {
+  const [zoom, setZoom] = useState(1);
+  const [zoomOut, setZoomOut] = useState(5);
+  const [font, setFontSize] = useState("2.2%");
   const { description, title } = route.params;
-  const logOutZoomState = (event, gestureState, zoomableViewEventObject) => {
-    console.log("");
-    console.log("");
-    console.log("-------------");
-    console.log("Event: ", event);
-    console.log("GestureState: ", gestureState);
-    console.log("ZoomableEventObject: ", zoomableViewEventObject);
-    console.log("");
-    console.log(
-      `Zoomed from ${zoomableViewEventObject.lastZoomLevel} to  ${zoomableViewEventObject.zoomLevel}`
-    );
+  const zoomFunction = (value) => {
+    {
+      if (value > 5) {
+        setZoom(1);
+      } else {
+        setZoom(zoom + 1);
+      }
+    }
+    switch (value) {
+      case 1:
+        return setFontSize("1.2%");
+        console.log("1");
+        break;
+
+      case 2:
+        return setFontSize("2.2%");
+        console.log("2");
+        break;
+      case 3:
+        return setFontSize("3.2%");
+        console.log("3");
+        break;
+
+      case 4:
+        return setFontSize("4.2%");
+        console.log("4");
+        break;
+
+      case 5:
+        return setFontSize("5.2%");
+        console.log("5");
+        break;
+
+      default:
+        return setFontSize("2.2%");
+        console.log("6");
+    }
   };
+  const zoomOutFunction = (value) => {
+    {
+      if (value > 5) {
+        setZoom(1);
+        console.log("zoom", zoomOut);
+      } else {
+        setZoom(zoom - 1);
+        console.log("zoom", zoomOut);
+      }
+    }
+    switch (value) {
+      case 1:
+        return setFontSize("1.2%");
+        console.log("1");
+        break;
+
+      case 2:
+        return setFontSize("2.2%");
+        console.log("2");
+        break;
+      case 3:
+        return setFontSize("3.2%");
+        console.log("3");
+        break;
+
+      case 4:
+        return setFontSize("4.2%");
+        console.log("4");
+        break;
+
+      case 5:
+        return setFontSize("5.2%");
+        console.log("5");
+        break;
+
+      default:
+        return setFontSize("2.2%");
+        console.log("6");
+    }
+  };
+
   let [fontsLoaded] = useFonts({
     jammel: require("../../assets/fonts/faiz-lahori-nastaleeq-regular-1.ttf"),
   });
@@ -46,23 +117,39 @@ const Description = ({ navigation, route }) => {
         />
 
         <View style={styles.descriptionStyle}>
+          <View style={styles.zoomit}>
+            <TouchableOpacity
+              onPress={() => {
+                zoomFunction(zoom);
+              }}
+            >
+              <FontAwesome name="search-plus" size={24} color="black" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                zoomOutFunction(zoom);
+              }}
+            >
+              <FontAwesome name="search-minus" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
+
           <ScrollView
             style={styles.scroll}
-            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
           >
-            <ReactNativeZoomableView
-              maxZoom={1.5}
-              minZoom={0.5}
-              zoomStep={0.5}
-              initialZoom={1}
-              bindToBorders={true}
-              onZoomAfter={logOutZoomState}
-            >
-              <Text style={[styles.descriptionText, { fontFamily: "jammel" }]}>
+            <View>
+           
+              <Text
+                style={[
+                  styles.descriptionText,
+                  { fontFamily: "jammel", fontSize: hp(font) },
+                ]}
+              >
                 {description}
               </Text>
               <View style={styles.space}></View>
-            </ReactNativeZoomableView>
+            </View>
           </ScrollView>
         </View>
       </View>
@@ -77,19 +164,25 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   descriptionStyle: {
-    // flex:1,
     alignItems: "flex-end",
-    left: wp("40%"),
     top: hp("6%"),
     padding: 12,
-    width: wp("60%"),
+    width: wp("90%"),
   },
   descriptionText: {
-    padding: 12,
-    fontSize: hp("2%"),
     textAlign: "right",
   },
   space: {
     height: hp("60%"),
+  },
+  zoomit: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: wp("50%"),
+    right: wp("20%"),
+  },
+  scroll: {
+    top: hp("2%"),
+    width: wp("90%"),
   },
 });

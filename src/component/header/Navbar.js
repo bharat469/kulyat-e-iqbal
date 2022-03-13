@@ -23,29 +23,14 @@ const Navbar = (props) => {
           <TouchableOpacity style={styles.menu} onPress={props.menu}>
             {props.leftIcon}
           </TouchableOpacity>
-          <View style={styles.leftNavbar}>
+         
             <Text style={styles.title}>{props.name}</Text>
-            <TouchableOpacity onPress={props.search}>
-              <FontAwesome
-                name="search"
-                size={24}
-                color="#fff"
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={props.bookmark}>
-            <MaterialIcons
-                name="favorite"
-                size={24}
-                color="#fff"
-                style={styles.icon}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={props.home}>
+          
+            <TouchableOpacity onPress={props.home} >
               <Entypo name="home" size={24} color="#fff" style={styles.icon} />
             </TouchableOpacity>
           </View>
-        </View>
+  
       </View>
     );
   }
@@ -74,7 +59,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#fff",
     padding: wp("4%"),
-    fontFamily:'jammel'
+    fontFamily:'jammel',
+    alignItems:'center',
+    textAlign:'center'
   },
   icon: {
     padding: wp("4%"),

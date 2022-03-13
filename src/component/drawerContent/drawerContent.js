@@ -66,7 +66,7 @@ const DrawerContent = (props) => {
           </View>
 
           <View style={styles.navData}>
-            <TouchableOpacity style={styles.navigation}>
+            <TouchableOpacity style={styles.navigation} onPress={()=>props.navigation.navigate('Home')}>
               <FontAwesome
                 name="home"
                 size={24}
@@ -75,24 +75,9 @@ const DrawerContent = (props) => {
               />
               <Text style={styles.lanText}>{Strings.HOME}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navigation}>
-              <FontAwesome
-                name="search"
-                size={24}
-                color="#fff"
-                style={styles.icon}
-              />
-              <Text style={styles.lanText}>{Strings.SEARCH}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.navigation}>
-              <FontAwesome
-                name="bookmark"
-                size={24}
-                color="#fff"
-                style={styles.icon}
-              />
-              <Text style={styles.lanText}>{Strings.FAVORITE}</Text>
-            </TouchableOpacity>
+           
+            
+           
             <TouchableOpacity style={styles.navigation}>
               <FontAwesome
                 name="globe"

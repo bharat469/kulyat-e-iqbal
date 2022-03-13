@@ -4,10 +4,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import Home from "../../container/home/home";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Search from "../../container/search/search";
+
 import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { primary } from "../../helpers/colors";
-import Favorite from "../../container/favorite/favorite";
+
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -67,40 +67,7 @@ const tabNavigation = () => {
           },
         }}
       />
-      <Tab.Screen
-        name="Search"
-        component={Search}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => {
-            return (
-              <FontAwesome
-                name="search"
-                size={44}
-                color="#fff"
-                style={[styles.icon, { color: focused ? "#fff" : "#A5A5A5" }]}
-              />
-            );
-          },
-        }}
-      />
-      <Tab.Screen
-        name="Favorite"
-        component={Favorite}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({focused}) => {
-            return (
-              <MaterialIcons
-                name="favorite"
-                size={44}
-                color="#fff"
-                style={[styles.icon, {color:focused?'#fff':'#A5A5A5'}]}
-              />
-            );
-          },
-        }}
-      />
+     
     </Tab.Navigator>
   );
 };

@@ -28,33 +28,8 @@ const { id, name } = route.params;
     jammel: require("../../assets/fonts/faiz-lahori-nastaleeq-regular-1.ttf"),
   });
 
-  const onFavourite = async (item) => {
-    setData([...data, item]);
-    console.log('data detail',data)
-    const Blist= JSON.stringify(data)
-     AsyncStorageLib.setItem('key',Blist).then(console.log('successfully saved'))
-   };
-
-  const onRemoveFavorite = async(book) => {
-    const filteredList = data.filter((item) => item.id !== book.id);
-    await AsyncStorageLib.removeItem('key').then(console.log('item removed'))
-    setData(filteredList);
-    console.log("removed", data);
-  };
-
-  const ifExists = (book) => {
-   const value=  AsyncStorageLib.getItem('key').then((item)=>setFav(item))
-  
-    if (data.filter((item) => item.id === book.id).length > 0) {
-      return true;
-     }
-    return false;
-    
-  };
  
-
-
-  if (!fontsLoaded) {
+ if (!fontsLoaded) {
     return <AppLoading />;
   } else {
     const showList = () => {
@@ -75,22 +50,7 @@ const { id, name } = route.params;
                       })
                     }
                   >
-                    <TouchableOpacity
-                      onPress={() =>
-                        ifExists(item)
-                          ? onRemoveFavorite(item)
-                          : onFavourite(item)
-                        
-                      }
-                      style={styles.btnFav}
-                    >
-                      <MaterialIcons
-                        name={ifExists(item) ? "favorite" : "favorite-outline"}
-                        size={24}
-                        color={primary}
-                        style={styles.icon}
-                      />
-                    </TouchableOpacity>
+                    
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -117,20 +77,7 @@ const { id, name } = route.params;
                       })
                     }
                   >
-                    <TouchableOpacity
-                      onPress={() =>
-                        ifExists(item)
-                          ? onRemoveFavorite(item)
-                          : onFavourite(item,id)
-                      }
-                    >
-                      <MaterialIcons
-                        name={ifExists(item) ? "favorite" : "favorite-outline"}
-                        size={24}
-                        color={primary}
-                        style={styles.icon}
-                      />
-                    </TouchableOpacity>
+               
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -157,20 +104,8 @@ const { id, name } = route.params;
                       })
                     }
                   >
-                    <TouchableOpacity
-                      onPress={() =>
-                        ifExists(item)
-                          ? onRemoveFavorite(item)
-                          : onFavourite(item,id)
-                      }
-                    >
-                      <MaterialIcons
-                        name={ifExists(item) ? "favorite" : "favorite-outline"}
-                        size={24}
-                        color={primary}
-                        style={styles.icon}
-                      />
-                    </TouchableOpacity>
+                  
+                    
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -197,20 +132,7 @@ const { id, name } = route.params;
                       })
                     }
                   >
-                    <TouchableOpacity
-                      onPress={() =>
-                        ifExists(item)
-                          ? onRemoveFavorite(item)
-                          : onFavourite(item)
-                      }
-                    >
-                      <MaterialIcons
-                        name={ifExists(item) ? "favorite" : "favorite-outline"}
-                        size={24}
-                        color={primary}
-                        style={styles.icon}
-                      />
-                    </TouchableOpacity>
+                   
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -269,13 +191,14 @@ const styles = StyleSheet.create({
     width: "90%",
     left: wp("6%"),
     borderRadius: 12,
-    alignItems: "center",
+    alignItems: 'flex-end',
     flexDirection: "row",
-    justifyContent: "space-between",
+    
   },
   titleList: {
     fontSize: hp("2.6%"),
     textAlign: "right",
+    left:wp('65%')
   },
 
   

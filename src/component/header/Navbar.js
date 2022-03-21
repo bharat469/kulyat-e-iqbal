@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
-import { Entypo, FontAwesome,MaterialIcons } from "@expo/vector-icons";
+import { Entypo, FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
@@ -23,14 +23,23 @@ const Navbar = (props) => {
           <TouchableOpacity style={styles.menu} onPress={props.menu}>
             {props.leftIcon}
           </TouchableOpacity>
-         
-            <Text style={styles.title}>{props.name}</Text>
-          
-            <TouchableOpacity onPress={props.home} >
+
+          <Text style={styles.title}>{props.name}</Text>
+
+          <View style={{ flexDirection: "row" }}>
+            <TouchableOpacity onPress={props.home}>
               <Entypo name="home" size={24} color="#fff" style={styles.icon} />
             </TouchableOpacity>
+            <TouchableOpacity onPress={props.search}>
+              <FontAwesome
+                name="search"
+                size={24}
+                color="#fff"
+                style={styles.icon}
+              />
+            </TouchableOpacity>
           </View>
-  
+        </View>
       </View>
     );
   }
@@ -52,16 +61,16 @@ const styles = StyleSheet.create({
   leftNavbar: {
     flexDirection: "row",
     alignItems: "center",
-   height:hp('12%')
+    height: hp("12%"),
   },
   title: {
     fontSize: hp("2.3%"),
     fontWeight: "bold",
     color: "#fff",
     padding: wp("4%"),
-    fontFamily:'jammel',
-    alignItems:'center',
-    textAlign:'center'
+    fontFamily: "jammel",
+    alignItems: "center",
+    textAlign: "center",
   },
   icon: {
     padding: wp("4%"),

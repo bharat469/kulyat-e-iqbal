@@ -109,10 +109,9 @@ const Description = ({ navigation, route }) => {
         <Navbar
           name={title}
           menu={() => navigation.goBack()}
-          search={() => navigation.navigate("Search")}
+          search={() => console.log('searchBar')}
           home={() => navigation.navigate("DrawerNavigator")}
-          home={() => navigation.navigate("DrawerNavigator")}
-          bookmark={() => navigation.navigate("Favorite")}
+         
           leftIcon={<Ionicons name="arrow-back" size={34} color="#fff" />}
         />
 
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     top: hp("6%"),
     padding: 12,
-    width: wp("90%"),
+    width: wp("98%"),
   },
   descriptionText: {
     textAlign: "right",

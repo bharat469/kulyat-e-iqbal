@@ -13,9 +13,8 @@ import AppLoading from "expo-app-loading";
 const Harees = require("../../data/harees_un_alain.json");
 const Sana = require("../../data/sana_ka_mosam.json");
 const Mahasin = require("../../data/Mahasin.json");
-import { primary } from "../../helpers/colors";
-import AsyncStorageLib from "@react-native-async-storage/async-storage";
-import { asin, Value } from "react-native-reanimated";
+
+
 
 
 const List = ({ navigation, route }) => {

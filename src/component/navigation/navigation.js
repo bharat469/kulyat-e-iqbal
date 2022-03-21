@@ -19,7 +19,7 @@ import List from "../../container/list/List";
 import Description from "../../container/description/description";
 import Strings from "../../helpers/localisedString";
 import AsyncStorageLib from "@react-native-async-storage/async-storage";
-
+import Search from '../../container/search/search'
 
 
 const Stack = createNativeStackNavigator();
@@ -59,6 +59,23 @@ const tabNavigation = () => {
             return (
               <Entypo
                 name="home"
+                size={44}
+                color="#fff"
+                style={[styles.icon, { color: focused ? "#fff" : "#A5A5A5" }]}
+              />
+            );
+          },
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: false,
+          tabBarIcon: ({ focused }) => {
+            return (
+              <FontAwesome
+                name="search"
                 size={44}
                 color="#fff"
                 style={[styles.icon, { color: focused ? "#fff" : "#A5A5A5" }]}

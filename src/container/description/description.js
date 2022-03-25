@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import Navbar from "../../component/header/Navbar";
 import {
@@ -14,27 +14,24 @@ import AppLoading from "expo-app-loading";
 import { FontAwesome } from "@expo/vector-icons";
 
 const Description = ({ navigation, route }) => {
-  const [zoom, setZoom] = useState(1);
-  const [zoomOut, setZoomOut] = useState(5);
+  const [zoom, setZoom] = useState(2);
+  const [zoomNames, setZoomName] = useState("");
   const [font, setFontSize] = useState("2.2%");
   const { description, title } = route.params;
-  const zoomFunction = (value) => {
-    {
-      if (value > 5) {
-        setZoom(1);
-      } else {
-        setZoom(zoom + 1);
-      }
-    }
-    switch (value) {
+
+  const zoomName = (value) => {
+    setZoomName(value);
+    zoomFunction(zoom);
+  };
+
+  const zoomFunction = () => {
+    switch (zoom) {
       case 1:
-        return setFontSize("1.2%");
-        console.log("1");
+        setFontSize("1.2%");
         break;
 
       case 2:
-        return setFontSize("2.2%");
-        console.log("2");
+        setFontSize("2.2%");
         break;
       case 3:
         return setFontSize("3.2%");
@@ -52,48 +49,31 @@ const Description = ({ navigation, route }) => {
         break;
 
       default:
-        return setFontSize("2.2%");
-        console.log("6");
+        setFontSize("2.2%");
+        break;
     }
   };
-  const zoomOutFunction = (value) => {
-    {
-      if (value > 5) {
-        setZoom(1);
-        console.log("zoom", zoomOut);
-      } else {
-        setZoom(zoom - 1);
-        console.log("zoom", zoomOut);
-      }
+
+  useEffect(() => {
+    zoomFunction();
+  });
+
+  const zoomIncrement = () => {
+    if (zoom >= 5) {
+      setZoom(5);
+      console.log("increment", zoom);
+    } else {
+      setZoom(zoom + 1);
+      console.log("increment +++", zoom);
     }
-    switch (value) {
-      case 1:
-        return setFontSize("1.2%");
-        console.log("1");
-        break;
-
-      case 2:
-        return setFontSize("2.2%");
-        console.log("2");
-        break;
-      case 3:
-        return setFontSize("3.2%");
-        console.log("3");
-        break;
-
-      case 4:
-        return setFontSize("4.2%");
-        console.log("4");
-        break;
-
-      case 5:
-        return setFontSize("5.2%");
-        console.log("5");
-        break;
-
-      default:
-        return setFontSize("2.2%");
-        console.log("6");
+  };
+  const zoomDecrement = () => {
+    if (zoom >= 2) {
+      setZoom(zoom - 1);
+      console.log("decrement --", zoom);
+    } else {
+      setZoom(1);
+      console.log("decrement", zoom);
     }
   };
 
@@ -109,9 +89,8 @@ const Description = ({ navigation, route }) => {
         <Navbar
           name={title}
           menu={() => navigation.goBack()}
-          search={() => console.log('searchBar')}
+          search={() => console.log("searchBar")}
           home={() => navigation.navigate("DrawerNavigator")}
-         
           leftIcon={<Ionicons name="arrow-back" size={34} color="#fff" />}
         />
 
@@ -119,14 +98,14 @@ const Description = ({ navigation, route }) => {
           <View style={styles.zoomit}>
             <TouchableOpacity
               onPress={() => {
-                zoomFunction(zoom);
+                zoomIncrement(zoom);
               }}
             >
               <FontAwesome name="search-plus" size={24} color="black" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => {
-                zoomOutFunction(zoom);
+                zoomDecrement(zoom);
               }}
             >
               <FontAwesome name="search-minus" size={24} color="black" />
@@ -138,7 +117,6 @@ const Description = ({ navigation, route }) => {
             showsVerticalScrollIndicator={false}
           >
             <View>
-           
               <Text
                 style={[
                   styles.descriptionText,

@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: primary,
     alignItems: "center",
-    height: hp("7%"),
+    height: hp("8.4%"),
   },
   leftNavbar: {
     flexDirection: "row",

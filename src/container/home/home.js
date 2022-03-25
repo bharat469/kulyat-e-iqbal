@@ -36,7 +36,7 @@ const Home = ({ navigation, route }) => {
             }
           >
             <Image
-              source={require("../../assets/book1.png")}
+              source={require("../../assets/book1.jpeg")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
@@ -48,7 +48,7 @@ const Home = ({ navigation, route }) => {
             }
           >
             <Image
-              source={require("../../assets/book2.png")}
+              source={require("../../assets/book2.jpeg")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
@@ -61,7 +61,7 @@ const Home = ({ navigation, route }) => {
             }
           >
             <Image
-              source={require("../../assets/book3.png")}
+              source={require("../../assets/book3.jpeg")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   },
   imageLeftStyle: {
     width: wp("44%"),
-    height: hp("30%"),
+    height: hp("37%"),
     padding: wp("2%"),
     margin: 12,
     // borderRadius: 12,

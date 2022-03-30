@@ -3,9 +3,7 @@ import urdu from "./lang/urdu";
 import english from "./lang/english";
 
 const Strings = new LocalizedStrings({
-    english:english,
-    urdu:urdu
-})
+  urdu: urdu,
+});
 
-
-export default Strings
+export default Strings;

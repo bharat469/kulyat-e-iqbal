@@ -24,7 +24,6 @@ const Home = ({ navigation, route }) => {
         menu={() => navigation.toggleDrawer()}
         search={() => navigation.navigate("Search")}
         home={() => navigation.navigate("DrawerNavigator")}
-        home={() => navigation.navigate("DrawerNavigator")}
         leftIcon={<Entypo name="menu" size={34} color="#fff" />}
       />
       <View style={styles.bookContainer}>
@@ -71,7 +70,7 @@ const Home = ({ navigation, route }) => {
             onPress={() => navigation.navigate("List", { id: 4, name: "تحیت" })}
           >
             <Image
-              source={require("../../assets/book4.png")}
+              source={require("../../assets/book4.jpeg")}
               style={styles.imageLeftStyle}
             />
           </TouchableOpacity>
@@ -100,7 +99,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flexDirection: "row",
-    top: hp("5%"),
+    top: hp("2%"),
   },
   book: {
     shadowColor: "#000",

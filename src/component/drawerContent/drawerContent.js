@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Image, StyleSheet, Text, View, Platform } from "react-native";
+import { Image, StyleSheet, Text, View, Platform, Linking } from "react-native";
 import { primary } from "../../helpers/colors";
 import { Entypo, FontAwesome, Feather } from "@expo/vector-icons";
 import {
@@ -34,15 +34,6 @@ const DrawerContent = (props) => {
     }
   };
 
-  const toggleSwitch = async (val) => {
-    setSelection(val);
-    setIsEnabled((previousState) => !previousState);
-    const langTy = val == true ? "urdu" : "english";
-    await AsyncStorageLib.setItem("lang", langTy);
-    await Strings.setLanguage(langTy);
-    await props.navigation.navigate("Home", { langTy });
-  };
-
   let [fontsLoaded] = useFonts({
     jammel: require("../../assets/fonts/faiz-lahori-nastaleeq-regular-1.ttf"),
   });
@@ -57,16 +48,11 @@ const DrawerContent = (props) => {
           style={styles.drawerImage}
         />
         <View style={styles.drawerNavigation}>
-          <View style={styles.languageContainer}>
-            <Text style={styles.lanText}>اردو/English</Text>
-            <Switch
-              value={isEnabled}
-              onValueChange={(val) => toggleSwitch(val)}
-            />
-          </View>
-
           <View style={styles.navData}>
-            <TouchableOpacity style={styles.navigation} onPress={()=>props.navigation.navigate('Home')}>
+            <TouchableOpacity
+              style={styles.navigation}
+              onPress={() => props.navigation.navigate("Home")}
+            >
               <FontAwesome
                 name="home"
                 size={24}
@@ -75,18 +61,7 @@ const DrawerContent = (props) => {
               />
               <Text style={styles.lanText}>{Strings.HOME}</Text>
             </TouchableOpacity>
-           
-            
-           
-            <TouchableOpacity style={styles.navigation}>
-              <FontAwesome
-                name="globe"
-                size={24}
-                color="#fff"
-                style={styles.icon}
-              />
-              <Text style={styles.lanText}>{Strings.WEBSITE}</Text>
-            </TouchableOpacity>
+
             <TouchableOpacity style={styles.navigation}>
               <FontAwesome
                 name="users"
@@ -98,7 +73,11 @@ const DrawerContent = (props) => {
             </TouchableOpacity>
 
             <View style={styles.socialIcon}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  Linking.openURL("Www.facebook.com/darulikhlasorg")
+                }
+              >
                 <Feather
                   name="facebook"
                   size={24}
@@ -106,7 +85,11 @@ const DrawerContent = (props) => {
                   style={[styles.iconStyle, { backgroundColor: "#4267B2" }]}
                 />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() =>
+                  Linking.openURL("Www.instagram.com/darulikhlasofficial")
+                }
+              >
                 <Feather
                   name="instagram"
                   size={24}
@@ -114,7 +97,9 @@ const DrawerContent = (props) => {
                   style={[styles.iconStyle, { backgroundColor: "#C13584" }]}
                 />
               </TouchableOpacity>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => Linking.openURL("Wa.me/923134456644")}
+              >
                 <FontAwesome
                   name="whatsapp"
                   size={24}
@@ -122,15 +107,14 @@ const DrawerContent = (props) => {
                   style={[styles.iconStyle, { backgroundColor: "#25D366" }]}
                 />
               </TouchableOpacity>
-              <TouchableOpacity>
-                <Entypo
-                  name="linkedin"
-                  size={24}
-                  color="#fff"
-                  style={[styles.iconStyle, { backgroundColor: "#4267B2" }]}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity>
+
+              <TouchableOpacity
+                onPress={() =>
+                  Linking.openURL(
+                    "https://youtube.com/channel/UCGk9HlnhNBKs-3VXWnst_Vg"
+                  )
+                }
+              >
                 <Feather
                   name="youtube"
                   size={24}
@@ -141,10 +125,6 @@ const DrawerContent = (props) => {
             </View>
           </View>
         </View>
-            <View style={styles.textEntry}>
-              <Text style={styles.textColor}>{Strings.DARULIKHLAS}</Text>
-              <Text style={styles.textColor}>{Strings.ISLAMIC}</Text>
-            </View>
       </View>
     );
   }
@@ -179,7 +159,7 @@ const styles = StyleSheet.create({
     fontFamily: "jammel",
     // padding: 12,
     bottom: Platform.OS === "ios" ? null : hp("1.2%"),
-    textAlign:'right'
+    textAlign: "right",
   },
   icon: {
     padding: wp("4%"),
@@ -204,16 +184,14 @@ const styles = StyleSheet.create({
     padding: 12,
     fontFamily: "jammel",
     fontWeight: "bold",
-    textAlign:'right'
-    
+    textAlign: "right",
   },
   navData: {
-    bottom: Platform.OS === "ios" ? null : hp("3%"),
+    top: hp("3%"),
   },
-  textEntry:{
-   top:hp('7%'),
- 
-   alignItems:'center'
-},
+  textEntry: {
+    top: hp("7%"),
 
+    alignItems: "center",
+  },
 });

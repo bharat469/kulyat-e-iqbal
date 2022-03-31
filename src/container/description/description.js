@@ -122,6 +122,7 @@ const Description = ({ navigation, route }) => {
                   styles.descriptionText,
                   { fontFamily: "jammel", fontSize: hp(font) },
                 ]}
+                selectable={true}
               >
                 {description}
               </Text>

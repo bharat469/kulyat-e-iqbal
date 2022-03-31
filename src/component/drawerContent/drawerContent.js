@@ -49,33 +49,12 @@ const DrawerContent = (props) => {
         />
         <View style={styles.drawerNavigation}>
           <View style={styles.navData}>
-            <TouchableOpacity
-              style={styles.navigation}
-              onPress={() => props.navigation.navigate("Home")}
-            >
-              <FontAwesome
-                name="home"
-                size={24}
-                color="#fff"
-                style={styles.icon}
-              />
-              <Text style={styles.lanText}>{Strings.HOME}</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={styles.navigation}>
-              <FontAwesome
-                name="users"
-                size={24}
-                color="#fff"
-                style={styles.icon}
-              />
-              <Text style={styles.lanText}>{Strings.ABOUT_US}</Text>
-            </TouchableOpacity>
-
             <View style={styles.socialIcon}>
               <TouchableOpacity
                 onPress={() =>
-                  Linking.openURL("Www.facebook.com/darulikhlasorg")
+                  Linking.openURL(
+                    "https://www.instagram.com/darulikhlasofficial/"
+                  )
                 }
               >
                 <Feather
@@ -87,7 +66,9 @@ const DrawerContent = (props) => {
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() =>
-                  Linking.openURL("Www.instagram.com/darulikhlasofficial")
+                  Linking.openURL(
+                    "https://www.instagram.com/darulikhlasofficial/"
+                  )
                 }
               >
                 <Feather
@@ -98,7 +79,11 @@ const DrawerContent = (props) => {
                 />
               </TouchableOpacity>
               <TouchableOpacity
-                onPress={() => Linking.openURL("Wa.me/923134456644")}
+                onPress={() =>
+                  Linking.openURL(
+                    "https://api.whatsapp.com/send/?phone=923134456644&text&app_absent=0"
+                  )
+                }
               >
                 <FontAwesome
                   name="whatsapp"
@@ -135,63 +120,28 @@ const styles = StyleSheet.create({
   drawerContent: {
     flex: 1,
     backgroundColor: primary,
+    justifyContent: "center",
   },
   drawerImage: {
-    width: Platform.OS === "ios" ? wp("46%") : wp("40%"),
-    height: hp("20%"),
-    top: hp("7%"),
+    width: Platform.OS === "ios" ? wp("46%") : wp("50%"),
+    height: hp("24%"),
+
     left: Platform.OS === "ios" ? wp("10") : wp("10%"),
   },
-  drawerNavigation: {
-    top: hp("7%"),
-    left: wp("5%"),
-  },
 
-  languageContainer: {
-    flexDirection: "row",
-    alignItems: Platform.OS === "ios" ? "center" : "center",
-    padding: Platform.OS === "ios" ? null : wp("0"),
-    margin: Platform.OS === "ios" ? null : wp("0"),
-  },
-  lanText: {
-    color: "#fff",
-    fontSize: Platform.OS === "ios" ? hp("3%") : hp("2.5%"),
-    fontFamily: "jammel",
-    // padding: 12,
-    bottom: Platform.OS === "ios" ? null : hp("1.2%"),
-    textAlign: "right",
-  },
-  icon: {
-    padding: wp("4%"),
-  },
   navigation: {
     flexDirection: "row",
     alignItems: "center",
   },
   socialIcon: {
     flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   iconStyle: {
     margin: 8,
     borderRadius: 13,
     padding: 4,
-  },
-
-  textColor: {
-    color: "#fff",
-    fontSize: hp("2%"),
-    padding: 12,
-    fontFamily: "jammel",
-    fontWeight: "bold",
-    textAlign: "right",
-  },
-  navData: {
-    top: hp("3%"),
-  },
-  textEntry: {
-    top: hp("7%"),
-
-    alignItems: "center",
   },
 });

@@ -14,30 +14,26 @@ const Harees = require("../../data/harees_un_alain.json");
 const Sana = require("../../data/sana_ka_mosam.json");
 const Mahasin = require("../../data/Mahasin.json");
 
-
-
-
 const List = ({ navigation, route }) => {
   const [data, setData] = useState([]);
-  const[fav,setFav]=useState([])
+  const [fav, setFav] = useState([]);
 
-const { id, name } = route.params;
+  const { id, name } = route.params;
 
   let [fontsLoaded] = useFonts({
     jammel: require("../../assets/fonts/faiz-lahori-nastaleeq-regular-1.ttf"),
   });
 
- 
- if (!fontsLoaded) {
+  if (!fontsLoaded) {
     return <AppLoading />;
   } else {
     const showList = () => {
       if (id === 1) {
         return (
           <FlatList
-            data={Harees}
+            data={Mahasin}
             keyExtractor={(item) => item.id}
-            renderItem={({ item,index }) => {
+            renderItem={({ item, index }) => {
               return (
                 <View style={styles.headerList}>
                   <TouchableOpacity
@@ -49,7 +45,6 @@ const { id, name } = route.params;
                       })
                     }
                   >
-                    
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -62,7 +57,7 @@ const { id, name } = route.params;
       } else if (id == 2) {
         return (
           <FlatList
-            data={Mahasin}
+            data={tahayyat}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               return (
@@ -76,7 +71,6 @@ const { id, name } = route.params;
                       })
                     }
                   >
-               
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -103,8 +97,6 @@ const { id, name } = route.params;
                       })
                     }
                   >
-                  
-                    
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -117,7 +109,7 @@ const { id, name } = route.params;
       } else if (id == 4) {
         return (
           <FlatList
-            data={tahayyat}
+            data={Harees}
             keyExtractor={(item) => item.id}
             renderItem={({ item }) => {
               return (
@@ -131,7 +123,6 @@ const { id, name } = route.params;
                       })
                     }
                   >
-                   
                     <Text style={[styles.titleList, { fontFamily: "jammel" }]}>
                       {item.title}
                     </Text>
@@ -149,7 +140,6 @@ const { id, name } = route.params;
           name={name}
           menu={() => navigation.goBack()}
           search={() => navigation.navigate("Search")}
-          home={() => navigation.navigate("DrawerNavigator")}
           home={() => navigation.navigate("DrawerNavigator")}
           bookmark={() =>
             navigation.navigate("Favorite", {
@@ -190,15 +180,12 @@ const styles = StyleSheet.create({
     width: "90%",
     left: wp("6%"),
     borderRadius: 12,
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
     flexDirection: "row",
-    
   },
   titleList: {
     fontSize: hp("2.6%"),
     textAlign: "right",
-    left:wp('65%')
+    left: wp("65%"),
   },
-
-  
 });

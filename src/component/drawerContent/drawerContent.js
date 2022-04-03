@@ -52,9 +52,7 @@ const DrawerContent = (props) => {
             <View style={styles.socialIcon}>
               <TouchableOpacity
                 onPress={() =>
-                  Linking.openURL(
-                    "https://www.instagram.com/darulikhlasofficial/"
-                  )
+                  Linking.openURL("https://www.facebook.com/darulikhlas.org/")
                 }
               >
                 <Feather
